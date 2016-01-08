@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HW2</title>
+        <link rel="stylesheet" href="Jyotsna_Mishra_Assignment2.css">
+        <script type="text/javascript">
+        function showHide(link){ 
+        if(link == 'home')
+            {
+                /*if(document.getElementById('home').style.display=="" || document.getElementById('home').style.display=="none")*/
+                document.getElementById('home').style.display='block';
+                document.getElementById('aboutus').style.display='none';
+                document.getElementById('contact').style.display='none';
+                    
+            }
+       else if(link == 'aboutus')
+            {                
+                document.getElementById('home').style.display='none';
+                document.getElementById('aboutus').style.display='block';
+                document.getElementById('contact').style.display='none';
+                    
+            } 
+       else if(link == 'contact')
+            {                
+                document.getElementById('home').style.display='none';
+                document.getElementById('aboutus').style.display='none';
+                document.getElementById('contact').style.display='block';
+            } 
+        }        
+        </script>
+    </head>
+    <body>
+        <div class="hder">
+            <h1>Welcome</h1>
+        </div>
+        <div class="leftSide">
+            <nav>
+                <ul>
+                    <li><a  onclick="showHide('home');">Home</a></li>
+                    <li><a  onclick="showHide('aboutus');">About us</a></li>
+                    <li><a  onclick="showHide('contact');">Contact Us</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+        <div class="brder">
+            <span></span>
+        </div>
+        <div class="rightSide" id="home">
+           <p>This is home page</p>
+        </div>
+        <div class="rightSide" id="aboutus">
+            <p>This is about us page</p>
+        </div>
+        <div class="rightSide" id="contact">
+            <p>This is contact us page</p>
+        </div> 
+        <div class="endingDiv"></div>
+        
+        <div class="footr">
+            <small>Jyotsna Mishra Assignment 2</small>
+        </div>
+    </body>
+</html>
