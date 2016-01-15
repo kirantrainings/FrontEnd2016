@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-horizontal">
+        <div class="form-group">
+            <label for="txtFirstName" 
+            class="control-label col-xs-2">First Name</label>
+            <div class="col-xs-6">
+                <input type="text" class="form-control" 
+                id="txtFirstName" placeholder="First Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="txtLastname" class="control-label col-xs-2">Last Name</label>
+            <div class="col-xs-6">
+                <input type="text" class="form-control" id="txtLastName" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ddlCountry" class="control-label col-xs-2">Country</label>
+            <div class="col-xs-6">
+               <select id="ddlCountry" class="form-control" onchange="bindStateDropdown()">
+               
+               </select>
+        </div>
+                </div>
+                  <div class="form-group">
+            <label for="ddlState" class="control-label col-xs-2">States</label>
+            <div class="col-xs-6">
+               <select id="ddlState" class="form-control">
+               
+               </select>
+        </div>
+                </div>
+           
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-6">
+                <button class="btn btn-primary"
+                id="btnSubmit"
+                onclick="readData()" >Click Me</button>
+            </div>
+        </div>
+            </div>
+
+        </div>
+        <script src="app/index.js"></script>
+    </body>
+</html>
