@@ -7,6 +7,7 @@ function fnameLoad(e){
 }
 
 $(document).ready(function() {
+	$('#btnSubmit').prop("disabled", true)
 	$("#fname").keypress(function(e){
 		onlyCharecters(e);
 	});
@@ -37,7 +38,10 @@ $(document).ready(function() {
 	});
 	$("#phnumb").keypress(function(e) {
 		onlyNumbers(e);
-	})
+	});
+	
+$('#fname, #lname, #country, #state, #phnumb, #age').keyup(action);
+	
 });
 function onlyCharecters(event){
 	var inputValue = event.which;
@@ -54,4 +58,18 @@ function onlyNumbers(event){
             event.preventDefault();
         }
 		   
+}
+
+	
+function action(){
+	var fname = $("#fname").val().length;
+	var lname =  $("#lname").val().length;
+	var age =  $("#age").val().length;
+	var country = $("#country").val().length;
+	var state =  $("#state").val().length;
+	var phone =  $("#phnumb").val().length;
+	if(fname>0 &&lname>0 && age>0 && country>0 && state>0 && phone >0){
+		$('#btnSubmit').prop("disabled", false);
+	}
+	else $('input[type="button"]').prop("disabled", true);
 }
