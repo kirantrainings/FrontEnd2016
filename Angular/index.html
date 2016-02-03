@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Example of Bootstrap 3 Tables with Borders</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <link href="css/StyleSheet.css" rel="stylesheet">
+      <style type="text/css">
+         a{
+         cursor: pointer;
+         text-decoration: none;
+         }
+      </style>
+   </head>
+   <body ng-app="vechiSearch">
+      <div class="container" ng-controller="vechiController">
+         <div>
+            <div ng-controller="headerController" 
+               ng-include="headerTemplate"></div>
+         </div>
+         <div  ng-controller="vechicleController" >
+            <span ng-show="menu=='Home'">{{content}}</span>
+            <div  ng-show="menu=='Cars'">
+               <div class="col-md-2">
+                  <div class="btn-group" data-ng-class="{open: open}">
+                     <button class="btn">Filter by Type</button>
+                     <button class="btn dropdown-toggle" data-ng-click="open=!open"><span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <li ng-click="allType()"><a><i class="icon-ok-sign"></i> All</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li data-ng-repeat="type in vechicleType"  data-ng-click="setSelectedType()"> <a>{{type.type}}<span></span></a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+				<div class="col-md-2">
+					<div class="btn-group">
+					  <button class="btn btn-mini">Sort By Price</button>
+					  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu">
+						<li><a ng-click="sortByPrice(100000)"> < 100000</a></li>
+						<li><a ng-click="sortByPrice(300000)">100001-300000</a></li>
+						<li><a ng-click="sortByPrice(300001)"> > 300000</a></li>
+					  </ul>
+					</div>
+				</div>
+               <div class="col-md-4">
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addData">Add Vechicle</button>
+                  <!-- Modal -->
+                  <div id="addData" class="modal fade" role="dialog">
+                     <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Add a vechicle to sell</h4>
+                           </div>
+                           <div class="modal-body">
+                              <form ng-submit="submit()">
+                                 <div class="form-group">
+                                    <label for="make">Make</label>
+                                    <input type="text" class="form-control" ng-model="addMake" id="make">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="year">Year</label>
+                                    <input type="text" class="form-control" ng-model="addYear" id="year">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="modal">Modal</label>
+                                    <input type="text" class="form-control" ng-model="addModal" id="modal">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="text" class="form-control" ng-model="addPrice" id="price">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="type">type</label>
+                                    <input type="text" class="form-control" ng-model="addType" id="type">
+                                 </div>
+                                 <input type="submit" class="btn btn-default" value="Submit">
+                              </form>
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="clr"></div>
+               <div id="tableDiv" class="bs-example">
+                  <ul>
+                     <li ng-repeat="vechi in filtered = (vechicle | typeFilter:selectedType | priceFilter:priceRange)" class="thumbnail table-striped">
+                        <div class="row-fluid">
+                           <div class="col-sm-3">
+                              <div><img ng-src="{{vechi.img}}" alt="icon" class="imgOfCar"></div>
+                           </div>
+                           <div class="col-sm-9">
+                              <h3 ng-bind="vechi.company.Make"> </h3>
+                              <div>Year: <span ng-bind="vechi.Year"> </span></div>
+                              <div>Model: <span ng-bind="vechi.Model"> </span></div>
+                              <div>Cost: <span ng-bind="vechi.Price| currency:'INR'"> </span></div>
+                              <div>Type: <span ng-bind="vechi.type"> </span></div>
+                           </div>
+                           <div class="clr"></div>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="app/common/common.js"></script>
+      <script src="app/common/APP_CONSTANTS.js"></script>
+      <!--<script src="app/controller/directives/VechiController.js"></script>-->
+      <script src="app/header/header.js"></script>
+      <script src="app/header/headerCtrl.js"></script>
+      <script src="app/app.js"></script>
+      <script src="app/controller/directives/Controller.js"></script>
+      <script src="app/controller/directives/VechiController.js"></script>
+   </body>
+</html>
