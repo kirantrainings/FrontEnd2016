@@ -1,0 +1,13 @@
+ul>li{
+	text-decoration: none;
+}
+.clr{
+	clear: both;
+}
+.thumbnail{
+	height: 155px;
+}
+.imgOfCar{
+	width: 155px;
+	height: 99px;
+}
