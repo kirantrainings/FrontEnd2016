@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+}
+.container-fluid {
+  min-height: 100%;
+  /* equal to footer height */
+    margin-bottom: -60px; 
+}
+.container-fluid:after {
+  content: "";
+  display: block;
+}
+.site-footer, .container-fluid:after {
+  /* .push must be the same height as footer */
+    height: 60px; 
+}
+.site-footer {
+	text-align: center;
+  background-color: aqua;
+}
+.site-footer>a{
+	color: #fff;
+}
